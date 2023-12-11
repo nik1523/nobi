@@ -1,0 +1,64 @@
+#include<iostream>
+using namespace std;
+class complex
+{
+float x;
+float y;
+public:
+complex()
+{
+real=0;
+img=0;
+}
+complex operator+(complex);
+complex operator*(complex);
+friend istream &operator >>(istream &input,complex &t)
+{
+cout<<"Enter the real part:";
+cout>>t.real;
+cout<<"Enter the imaginary part:";
+cout>>t.img;
+}
+friend ostream &operator <<(ostream &output, const complex &t)
+{
+
+output<<t.real<<"+"<<t.img<<"i\n";
+
+}
+};
+complex complex::operator+(complex c)
+{
+complex temp;
+temp.real=real+c.real;
+temp.img=img+c.img;
+return(temp);
+}
+complex complex::operator*(complex c)
+{
+complex tm;
+tm.real=(real*c.real)-(img*c.img);
+tm.img=(img*c.real)+(real*c.img);
+return (tm);
+}
+int main()
+{
+complex c1,c2,c3,c4;
+cout<<"Default constructor value=\n";
+cout<<c1;
+cout<<"Enter the 1st number\n";
+cin>>c1;
+cout<<"Enter the 2nd number\n";
+
+cin>>c2;
+c3=c1+c2;
+c4=c1*c2;
+cout<<"The first number is ";
+cout<<c1;
+cout<<"The second number is ";
+cout<<c2;
+cout<<"The addition is ";
+cout<<c3;
+cout<<"The multiplication is ";
+cout<<c4;
+return 0;
+}
